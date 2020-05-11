@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+<html lang="ru">
+
+<head>
+</head>
+
+<body>
+    <div class="container">
+        {% block content %}
+            <div class="content">
+                <hr>
+                <div class="product-info">
+                    <h1 class="product_name">Видеокарта MSI GeForce RTX 2080 Ti GAMING X</h1>
+
+                    <div class="product_images">
+                        <a href="{% static 'img/rtx_2080ti.jpg' %}" target="_blank"><img src="{% static 'img/rtx_2080ti.jpg' %}" alt="Видеокарта" width="200" height="200" title="Открыть в новой вкладке"></a>
+                    </div>
+
+                    <div class="brief_description">
+                        <h2>Краткое описание товара</h2>
+                        <p>Игровая видеокарта MSI GeForce RTX 2080 с объемом видеопамяти 11 ГБ</p>
+                    </div>
+
+                    <div class="detailed_description">
+                        <h2>Подробное описание товара</h2>
+                        <p>Видеокарта MSI GeForce RTX 2080 Ti GAMING X [RTX 2080 Ti GAMING X] в черном корпусе будет удачным решением, если вы собираете системный блок с большим игровым потенциалом. Модель с поддержкой трассировки лучей и видеопамятью объемом 11 ГБ успешно справляется с обработкой графического контента в недавно вышедших ресурсоемких видеоиграх. Она помещена в черный корпус и оборудована светодиодной подсветкой, обеспечивающей ей эффектный внешний вид. В устройстве предусмотрены осевые вентиляторы воздушного охлаждения в количестве 3 шт.<br>Видеопроцессор MSI GeForce RTX 2080 Ti GAMING X TRIO [RTX 2080 Ti GAMING X TRIO] присоединяется к интерфейсу PCI-E 3.0 и может предложить видеовыходы 3x DisplayPort, HDMI, USB-C для подключения до 4 ваших мониторов, ЖК-ТВ, проекторов одновременно. Он демонстрирует наибольшее энергопотребление на уровне 300 Вт, а рекомендуемая производителем выходная мощность блока питания системы для него составляет 650 Вт.
+                        </p>
+                    </div>
+
+                    <div class="appearance">
+                        <h2>Внешний вид</h2>
+                        <p>Видеокарта GeForce RTX 2080 Ti выполнена в едином для всей серии RTX Founders Edition дизайне с закрытым кожухом, единственное отличие от более длинных младших RTX 2080 и RTX 2080i — меньшее расстояние между вентиляторами, где на контрастной тёмной площадке нанесено наименование модели. Габаритные размеры карты — 115 х 39 х 230 мм, масса — 970 г.
+                        </p>
+                    </div>
+
+                    <div class="specifications-header">
+                        <h2>Характеристики товара</h2>
+                        <table class="specifications">
+                            <tr>
+                                <td>1.</td>
+                                <td>Частота</td>
+                                <td>1755 МГц</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Объем видеопамяти</td>
+                                <td>11 ГБ</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Тип памяти</td>
+                                <td>GDDR6</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Видео разъемы</td>
+                                <td>USB-C, HDMI</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>Тип охлаждения</td>
+                                <td>активное воздушное</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="price">
+                        <h3>76 788,00 руб.</h3>
+                    </div>
+
+                    <div class="buy-button">
+                        <a href="#">Купить</a>
+                    </div>
+
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>
