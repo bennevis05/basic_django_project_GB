@@ -1,0 +1,20 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="category-content">
+        <hr>
+        <h1>{{ category.title }}</h1>
+        {% if products == 'Товары пока отсутствуют' %}
+            <div class="all-products">
+            <p class="all-category_product">Товары пока отсутствуют</p>
+        {% else %}
+            {% for product in products %}
+                <div class="category_product">
+                    <a href="product"><img src="/media/{{ product.product_image }}" alt="Товар"></a><br>
+                    <a href="product">{{ product.name }}</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+{% endblock %}
