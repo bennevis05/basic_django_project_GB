@@ -1,0 +1,20 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="category-content">
+        <hr>
+        <h1>{{ current_category.title }}</h1>
+        {% if not products_category %}
+            <div class="all-products">
+            <p class="all-category_product">В данной категории товары отсутствуют</p>
+        {% else %}
+            {% for product in products_category %}
+                <div class="category_product">
+                    <a href="{% url 'catalog:product' current_category.id product.id %}"><img src="/media/{{ product.product_image }}" alt="Товар"></a><br>
+                    <a href="{% url 'catalog:product' current_category.id product.id %}">{{ product.name }}</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+{% endblock %}
