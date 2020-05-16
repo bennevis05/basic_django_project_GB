@@ -8,42 +8,33 @@ def main(request):
     return render(request, 'mainapp/index.html', content)
 
 
-def catalog(request, pk=None):
+def catalog(request):
     title = 'каталог'
     categories = ProductCategory.objects.all()
-    products = Product.objects.all()
     content = {
-            'title': title,
-            'categories': categories,
-            'products': products
+        'title': title,
+        'categories': categories
     }
-    if pk:
-        category = ProductCategory.objects.all()[pk - 1]
-        try:
-            products = Product.objects.filter(category_id = category.id)
-            content = {
-                'title': title,
-                'category': category,
-                'products': products
-            }
-        except IndexError:
-            products = 'Товары пока отсутствуют'
-            content = {
-                'title': title,
-                'category': category,
-                'products': products
-            }
-        return render(request, f'mainapp/catalog/category.html', content)
     return render(request, 'mainapp/catalog/catalog.html', content)
 
 
-def product(request, pk=None):
-    category = ProductCategory.objects.all()[pk - 1]
-    product = Product.objects.all()[pk - 1]
+def category(request, pk):
+    title = 'категория товара'
+    current_category = ProductCategory.objects.get(id=pk)
+    products_category = Product.objects.filter(category_id=pk)
+    content = {
+        'title': title,
+        'current_category': current_category,
+        'products_category': products_category
+    }
+    return render(request, 'mainapp/catalog/category.html', content)
+
+
+def product(request, category_pk, pk):
+    product = Product.objects.get(id=pk)
     title = product.name
     content = {
         'title': title,
-        'category': category,
         'product': product,
         'specifications': str(product.specifications).split(';')
     }
