@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    
+    {% block js %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+        {% block header %}
+        <div class="page-header">
+            <div class="logo">
+                <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="Логотип" width="125px" title="Перейти на главную страницу"></a>
+            </div>
+            <div class="basket">
+                <a href="#">Корзина<img src="{% static 'img/basket-img.png' %}" alt="basket" class="basket-image"></a>
+                <span>{% if basket %} {{ basket|length }} {% endif %}</span>
+            </div>
+            {% include 'mainapp/includes/inc_menu.html' %}
+        </div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+            <div class="page-footer">
+                <hr>
+                <p>&laquo;{{ 'технотрейд'|title }}&raquo; &copy; {% now 'Y' %} &laquo;Все права защищены&raquo;</p>
+            </div>
+        {% endblock %}
+    </div>
+</body>
+</html>

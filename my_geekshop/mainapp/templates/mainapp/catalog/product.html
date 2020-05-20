@@ -1,0 +1,54 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="content">
+        <hr>
+        <div class="product-info">
+            <h1 class="product_name">{{ product.name }}</h1>
+
+            <div class="product_images">
+                <a href="/media/{{ product.product_image }}" target="_blank"><img src="/media/{{ product.product_image }}" alt="Видеокарта" width="200" height="200" title="Открыть в новой вкладке"></a>
+            </div>
+
+            <div class="brief_description">
+                <h2>Краткое описание товара</h2>
+                <p>{{ product.short_desc }}</p>
+            </div>
+
+            <div class="detailed_description">
+                <h2>Подробное описание товара</h2>
+                <p>{{ product.detailed_desc }}</p>
+            </div>
+
+            <div class="appearance">
+                <h2>Внешний вид</h2>
+                <p>{{ product.appearance }}</p>
+            </div>
+
+            <div class="specifications-header">
+                <h2>Характеристики товара</h2>
+                <table class="specifications">
+                    {% for spec in specifications %}
+                        <tr>
+                            <td>{{ spec }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="price">
+                <h3>{{ product.price }} руб.</h3>
+            </div>
+
+            <div class="buy-button">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'basket:add' product.pk %}" title='Добавить товар в корзину'>Купить</a>
+                {% else %}
+                    <a href="{% url 'auth:login' %}" title='Добавить товар в корзину'>Купить</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
