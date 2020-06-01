@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="content">
+        <hr>
+        <h1>Каталог</h1>
+        <div class="catalog">
+            <div class="hot-products">
+                <p>Горячие предложения!</p>
+                {% for product in hot_products %}
+                <div class="category_product">
+                    <a href="{% url 'catalog:product' 1 product.id %}"><img src="/media/{{ product.product_image }}" alt="Товар"></a><br>
+                    <a href="{% url 'catalog:product' 1 product.id %}">{{ product.name }} - <span class="formatted-price">{{ product.price }}</span></a>
+                </div>
+                {% endfor %}
+            </div>
+            <br><hr>
+            <p class="categories">Категории товаров</p>
+            {% include 'mainapp/includes/inc_categories.html' %}
+        </div>
+    </div>
+{% endblock %}
